@@ -5,7 +5,7 @@ export const theme = {
   subColor: '#729994',
   secondaryColor: '#FBAA0B',
   baseText: '#333',
-  secondText: '#aaa',
+  secondText: '#777',
   subText: '#fff',
   baseColor1: '#fff',
   baseColor2: '#efefef',
