@@ -164,9 +164,16 @@ export const GlobalStyle = createGlobalStyle`
     outline: none;
   }
 
+  p{
+    font-size: ${(p) => p.theme.FONT.BASE}rem;
+  }
   a {
+    font-size: ${(p) => p.theme.FONT.BASE}rem;
     text-decoration: none;
-    color: #ddd;
+    color: ${(p) => p.theme.primaryColor};
+  }
+  a:hover{
+    opacity: 0.8;
   }
   @media (max-width: 768px) {
     html {

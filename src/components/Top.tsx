@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
-import { Page } from './Page';
+import { Page } from './common';
 import Hats from '../images/categories/hats.jpg';
 import grass from '../images/categories/sunglasses.jpg';
 import shoes from '../images/categories/shoes.jpg';
@@ -54,9 +54,7 @@ const FeatureProducts = styled.section`
   display: grid;
   grid-template-columns: 220px 1fr;
   grid-gap: 20px;
-  > div:first-child {
-    border: 1px solid ${(p) => p.theme.baseColor3};
-  }
+
   .feature-product-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -174,10 +172,10 @@ const Home = () => {
       <FeatureProducts>
         <div>
           <Filters>
-            <h2>Filters</h2>
+            <h2>フィルター</h2>
             <div className='all-filters'>
               <div className='filter-section'>
-                <strong>categories</strong>
+                <strong>カテゴリー</strong>
                 <Filter>
                   <input type='checkbox' /> Hats
                 </Filter>

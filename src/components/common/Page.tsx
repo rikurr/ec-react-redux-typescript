@@ -1,9 +1,9 @@
 import React, { useEffect, FC, ReactNode } from 'react';
-import { Layout } from './common';
+import { Layout } from '.';
 
 type PageProps = {
   title: string;
-  wide: boolean
+  wide: boolean;
 };
 
 const Page: FC<PageProps> = ({ title, children, wide }) => {

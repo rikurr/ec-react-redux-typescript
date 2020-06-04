@@ -1,14 +1,19 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
+import { HeaderNav } from './common';
 
 const HeaderWrap = styled.header`
   height: 66px;
   background: ${(p) => p.theme.primaryColor};
-  box-shadow: 0 2px 4px rgba(0,0,0,0.4);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
 
   .header-inner {
-    max-width: ${p => p.theme.layout.width}px;
+    width: 95%;
+    height: 100%;
     margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 `;
 const Branding = styled.h1`
@@ -20,6 +25,7 @@ const Header = () => {
     <HeaderWrap>
       <div className='header-inner'>
         <Branding>InFaste</Branding>
+        <HeaderNav />
       </div>
     </HeaderWrap>
   );
