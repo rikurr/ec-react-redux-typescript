@@ -39,7 +39,7 @@ const getButtonStyles = (props: Props) => {
 };
 const Button = styled.button`
   margin-top: 20px;
-  padding: 8px 12px;
+  padding: 12px 16px;
   border: none;
   border-radius: 5px;
   color: ${(p) => p.theme.baseColor1};
