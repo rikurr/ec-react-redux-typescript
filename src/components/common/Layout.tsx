@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import styled from 'styled-components';
 
 type LayoutProps = {
-  wide: boolean;
+  wide?: boolean;
 };
 
 const LayoutWrap = styled.main<LayoutProps>`

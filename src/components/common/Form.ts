@@ -25,7 +25,7 @@ const googleSignInStyles = css`
 `;
 
 type Props = {
-  isGoogleSignIn: boolean;
+  isGoogleSignIn?: boolean;
 };
 
 const getButtonStyles = (props: Props) => {

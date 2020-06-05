@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { HeaderNav } from './common';
+import { Link } from 'react-router-dom';
 
 const HeaderWrap = styled.header`
   height: 66px;
@@ -17,14 +18,19 @@ const HeaderWrap = styled.header`
   }
 `;
 const Branding = styled.h1`
-  font-size: ${(p) => p.theme.FONT.XXXLARGE}rem;
-  font-family: 'Acme', sans-serif;
+  a {
+    font-size: ${(p) => p.theme.FONT.XXXLARGE}rem;
+    font-family: 'Acme', sans-serif;
+    color: ${p => p.theme.subText};
+  }
 `;
 const Header = () => {
   return (
     <HeaderWrap>
       <div className='header-inner'>
-        <Branding>InFaste</Branding>
+        <Branding>
+          <Link to='/'>InFaste</Link>
+        </Branding>
         <HeaderNav />
       </div>
     </HeaderWrap>

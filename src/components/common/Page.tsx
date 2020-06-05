@@ -3,7 +3,7 @@ import { Layout } from '.';
 
 type PageProps = {
   title: string;
-  wide: boolean;
+  wide?: boolean;
 };
 
 const Page: FC<PageProps> = ({ title, children, wide }) => {
