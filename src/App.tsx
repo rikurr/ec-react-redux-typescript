@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useEffect, FC } from 'react';
 import { Route, Switch, BrowserRouter } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import { GlobalStyle } from './GlobalStyle';
 import { theme } from './theme';
 import { selectApp } from './features/appSlice/appSlice';
+import { auth } from './db/firebase';
 
 // ======= components ======
 import Top from './components/Top';
@@ -11,10 +12,17 @@ import Login from './components/Login';
 import Header from './components/Header';
 import { Footer, FlashMessages } from './components/common';
 import Page404 from './components/Page404';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { subscribeFromAuth } from './features/user/userSlice';
 
-const App = () => {
+const App: FC = () => {
   const appState = useSelector(selectApp);
+  const dispatch = useDispatch()
+
+
+  useEffect(() => {
+    dispatch(subscribeFromAuth())
+  }, [dispatch]);
   return (
     <ThemeProvider theme={theme}>
       <BrowserRouter>

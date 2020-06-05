@@ -38,6 +38,7 @@ const getButtonStyles = (props: Props) => {
   `;
 };
 const Button = styled.button`
+  cursor: pointer;
   margin-top: 20px;
   padding: 12px 16px;
   border: none;

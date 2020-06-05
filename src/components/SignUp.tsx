@@ -1,4 +1,4 @@
-import React, { FC, useState, FormEvent, ChangeEvent } from 'react';
+import React, {  useState, FormEvent, ChangeEvent } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   flashMessage,
@@ -44,7 +44,6 @@ const SignUp = () => {
     });
     setSend(false);
     dispatch(flashMessage('アカウントを作成しました'));
-    console.log('hello');
   };
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>): void => {
