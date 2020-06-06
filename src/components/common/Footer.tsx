@@ -32,6 +32,7 @@ const FooterNav = styled.nav`
   align-items: center;
   justify-content: space-evenly;
   height: 90%;
+  margin: 0 auto;
 `;
 
 const Footer: FC = () => {

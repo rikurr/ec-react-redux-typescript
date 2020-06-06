@@ -46,7 +46,6 @@ export const {
 export const subscribeFromAuth = (): AppThunk => (dispatch) => {
   const subscribe = () => {
     auth.onAuthStateChanged(async (user) => {
-      console.log(user);
       if (user) {
         const userRef = await createUserDocument(user);
         await userRef?.onSnapshot((snapShot) => {
@@ -57,8 +56,10 @@ export const subscribeFromAuth = (): AppThunk => (dispatch) => {
             })
           );
         });
+        console.log('login');
       } else {
         dispatch(setCurrentUserFailure());
+        console.log('logout');
       }
     });
   };

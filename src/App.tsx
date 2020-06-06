@@ -22,8 +22,9 @@ const App: FC = () => {
 
   useEffect(() => {
     dispatch(subscribeFromAuth());
-  }, []);
+  }, [dispatch]);
 
+  console.log(userState.currrentUser);
   return (
     <ThemeProvider theme={theme}>
       <BrowserRouter>

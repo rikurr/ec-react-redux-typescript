@@ -1,19 +1,20 @@
 import React, { useState, FormEvent, ChangeEvent } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { withRouter, RouteComponentProps } from 'react-router-dom';
 import {
   flashMessage,
   hasError,
   selectApp,
 } from '../features/appSlice/appSlice';
 import { Form, Input, Button, LiveValidateMessage } from './common';
-import { signInWithGoogle } from '../db/firebase';
+import { signInWithGoogle, auth } from '../db/firebase';
 
 type Value = {
   email: string;
   password: string;
 };
 
-const SignIN = () => {
+const SignIN = ({ history }: RouteComponentProps) => {
   const appState = useSelector(selectApp);
   const dispatch = useDispatch();
   const [value, setValue] = useState<Value>({
@@ -24,18 +25,28 @@ const SignIN = () => {
 
   const { email, password } = value;
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    if (email.trim() === '' || password.trim() === '') {
-      return dispatch(hasError('電子メールまたはパスワードが正しくありません。'));
-    }
     setSend(true);
+    if (email.trim() === '' || password.trim() === '') {
+      setSend(false);
+      return dispatch(
+        hasError('電子メールまたはパスワードが正しくありません。')
+      );
+    }
+    try {
+      await auth.signInWithEmailAndPassword(email, password);
+      setSend(false);
+      dispatch(flashMessage('ログインしました。'));
+      history.push('/');
+    } catch (error) {
+      console.log('error login');
+      setSend(false);
+    }
     setValue({
       email: '',
       password: '',
     });
-    setSend(false);
-    dispatch(flashMessage('ログインしました。'));
   };
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>): void => {
@@ -75,4 +86,4 @@ const SignIN = () => {
   );
 };
 
-export default SignIN;
+export default withRouter(SignIN);

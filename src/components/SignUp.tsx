@@ -1,11 +1,13 @@
-import React, {  useState, FormEvent, ChangeEvent } from 'react';
+import React, { useState, FormEvent, ChangeEvent } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { withRouter, RouteComponentProps } from 'react-router-dom';
 import {
   flashMessage,
   hasError,
   selectApp,
 } from '../features/appSlice/appSlice';
 import { Form, Input, Button, LiveValidateMessage } from './common';
+import { auth, createUserDocument } from '../db/firebase';
 
 type Value = {
   username: string;
@@ -13,7 +15,7 @@ type Value = {
   password: string;
 };
 
-const SignUp = () => {
+const SignUp = ({ history }: RouteComponentProps) => {
   const dispatch = useDispatch();
   const appState = useSelector(selectApp);
   const [value, setValue] = useState<Value>({
@@ -25,7 +27,8 @@ const SignUp = () => {
 
   const { username, email, password } = value;
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
+    setSend(true);
     e.preventDefault();
     if (
       email.trim() === '' ||
@@ -36,14 +39,25 @@ const SignUp = () => {
         hasError('電子メールまたはパスワードが正しくありません。')
       );
     }
-    setSend(true);
-    setValue({
-      username: '',
-      email: '',
-      password: '',
-    });
-    setSend(false);
-    dispatch(flashMessage('アカウントを作成しました'));
+    try {
+      const { user } = await auth.createUserWithEmailAndPassword(
+        email,
+        password
+      );
+      console.log(user);
+      await createUserDocument(user, { username });
+      setValue({
+        username: '',
+        email: '',
+        password: '',
+      });
+      setSend(false);
+      dispatch(flashMessage('アカウントを作成しました'));
+      history.push('/');
+    } catch (error) {
+      console.log('error create user');
+      setSend(false);
+    }
   };
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>): void => {
@@ -83,4 +97,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default withRouter(SignUp);

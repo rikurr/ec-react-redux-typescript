@@ -16,7 +16,7 @@ const config = {
 
 firebase.initializeApp(config);
 
-export const createUserDocument = async (userAuth: any) => {
+export const createUserDocument = async (userAuth: any, addData?: any) => {
   if (!userAuth) return;
 
   const userRef = firestore.doc(`users/${userAuth.uid}`);
@@ -32,6 +32,7 @@ export const createUserDocument = async (userAuth: any) => {
         email,
         createdAt,
         role_id,
+        ...addData
       });
     } catch (error) {
       console.log('ユーザーの作成に失敗しました');

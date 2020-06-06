@@ -75,7 +75,7 @@ const FeatureProducts = styled.section`
   }
   @media (max-width: 800px) {
     .feature-product-grid {
-      grid-template-columns: 1fr;
+      grid-template-columns: 1fr 1fr;
     }
   }
   @media (max-width: 600px) {
