@@ -7,6 +7,12 @@ const Form = styled.form`
   width: 40%;
   padding: 40px 20px;
   margin-top: 20px;
+  @media (max-width: 768px) {
+    width: 70%;
+  }
+  @media (max-width: 480px) {
+    width: 90%;
+  }
 `;
 const Input = styled.input`
   padding: 12px 20px;

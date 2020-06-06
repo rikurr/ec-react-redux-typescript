@@ -1,42 +1,65 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState, AppThunk } from '../../app/store';
-import { auth } from '../../db/firebase';
+import { auth, createUserDocument } from '../../db/firebase';
 
 type UserState = {
   currrentUser: any;
   isLogin: boolean;
+  isFetching: boolean;
 };
 
 const initialState: UserState = {
   currrentUser: null,
   isLogin: false,
+  isFetching: true,
 };
 
 export const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    setCurrentUser: (state, action) => {
+    setCurrentUserSuccess: (state, action) => {
       state.currrentUser = action.payload;
+      state.isLogin = true;
+      state.isFetching = false;
     },
     logined: (state) => {
       state.isLogin = true;
     },
-    logout: state => {
+    logout: (state) => {
       state.isLogin = false;
-    }
+      state.currrentUser = null;
+    },
+    setCurrentUserFailure: (state) => {
+      state.isFetching = false;
+    },
   },
 });
 
-export const { setCurrentUser, logined, logout } = userSlice.actions;
+export const {
+  setCurrentUserSuccess,
+  logined,
+  logout,
+  setCurrentUserFailure,
+} = userSlice.actions;
 
 export const subscribeFromAuth = (): AppThunk => (dispatch) => {
-  const subscribe = async () => {
-    auth.onAuthStateChanged((user) => {
-      if (user) {
-        dispatch(logined());
-      }
+  const subscribe = () => {
+    auth.onAuthStateChanged(async (user) => {
       console.log(user);
+      if (user) {
+        const userRef = await createUserDocument(user);
+        await userRef?.onSnapshot((snapShot) => {
+          dispatch(
+            setCurrentUserSuccess({
+              id: snapShot.id,
+              ...snapShot.data(),
+            })
+          );
+        });
+      } else {
+        dispatch(setCurrentUserFailure());
+      }
     });
   };
   subscribe();

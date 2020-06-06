@@ -5,4 +5,5 @@ export * from './HeaderNav';
 export * from './Form';
 export * from './Page';
 export * from './FlashMessage';
-export * from './LiveValidateMessage'
+export * from './LiveValidateMessage';
+export * from './LoadingIcon';

@@ -35,13 +35,12 @@ const HeaderNavWrap = styled.nav`
 const HeaderNav = () => {
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
-
+  
   const handleLogout = () => {
     auth.signOut();
     dispatch(logout());
   };
 
-  console.log(user.isLogin);
   return (
     <HeaderNavWrap>
       <Link data-tip='Login' to='/login'>
@@ -78,6 +77,7 @@ const HeaderNav = () => {
       {user.isLogin && (
         <LogoutButton onClick={handleLogout}>ログアウト</LogoutButton>
       )}
+      {user?.currrentUser?.role_id === 1 ? <p>create</p> : null}
     </HeaderNavWrap>
   );
 };
