@@ -54,6 +54,12 @@ const SignIN = ({ history }: RouteComponentProps) => {
     setValue((prev) => ({ ...prev, [name]: value }));
   };
 
+  const googleSignIn = async() => {
+    await signInWithGoogle()
+    history.push('/')
+    dispatch(flashMessage('Google認証に成功しました'));
+  }
+
   return (
     <Form onSubmit={handleSubmit}>
       <p>ログイン</p>
@@ -75,7 +81,7 @@ const SignIN = ({ history }: RouteComponentProps) => {
         placeholder='password'
         autoComplete='off'
       />
-      <Button type='button' onClick={signInWithGoogle} isGoogleSignIn={true}>
+      <Button type='button' onClick={googleSignIn} isGoogleSignIn={true}>
         Sign in with Google
       </Button>
       <p className='form-separate'>または</p>

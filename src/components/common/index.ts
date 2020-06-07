@@ -7,3 +7,4 @@ export * from './Page';
 export * from './FlashMessage';
 export * from './LiveValidateMessage';
 export * from './LoadingIcon';
+export * from './HeaderLoginedNav';

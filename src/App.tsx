@@ -14,6 +14,7 @@ import { Footer, FlashMessages, LoadingIcon } from './components/common';
 import Page404 from './components/Page404';
 import { useSelector, useDispatch } from 'react-redux';
 import { subscribeFromAuth } from './features/user/userSlice';
+import AdminPage from './components/AdminPage';
 
 const App: FC = () => {
   const appState = useSelector(selectApp);
@@ -42,6 +43,11 @@ const App: FC = () => {
               <Route path='/login'>
                 <Login />
               </Route>
+              {userState.isLogin && userState.currrentUser.role_id === 1 && (
+                <Route path='/admin'>
+                  <AdminPage />
+                </Route>
+              )}
               <Route>
                 <Page404 />
               </Route>

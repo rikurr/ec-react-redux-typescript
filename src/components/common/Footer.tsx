@@ -29,10 +29,10 @@ const FooterInner = styled.div`
 const FooterNav = styled.nav`
   width: 60%;
   display: flex;
-  align-items: center;
   justify-content: space-evenly;
   height: 90%;
   margin: 0 auto;
+  padding-top: 50px;
 `;
 
 const Footer: FC = () => {
@@ -41,30 +41,13 @@ const Footer: FC = () => {
       <FooterInner>
         <FooterNav>
           <div>
-            <h3>About</h3>
+            <h3>企業情報</h3>
             <ul>
               <li>
-                <a href='/#'>About us</a>
+                <a href='/#'>InFasteについて</a>
               </li>
               <li>
                 <a href='/#'>Therms</a>
-              </li>
-              <li>
-                <a href='/#'>Top</a>
-              </li>
-            </ul>
-          </div>
-          <div>
-            <h3>ポリシー</h3>
-            <ul>
-              <li>
-                <a href='/#'>リーガル</a>
-              </li>
-              <li>
-                <a href='/#'>プライバシーポリシー</a>
-              </li>
-              <li>
-                <a href='/#'>会社概要</a>
               </li>
             </ul>
           </div>
@@ -79,6 +62,20 @@ const Footer: FC = () => {
               </li>
               <li>
                 <a href='/#'>ブログ</a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3>ポリシー</h3>
+            <ul>
+              <li>
+                <a href='/#'>リーガル</a>
+              </li>
+              <li>
+                <a href='/#'>プライバシーポリシー</a>
+              </li>
+              <li>
+                <a href='/#'>会社概要</a>
               </li>
             </ul>
           </div>

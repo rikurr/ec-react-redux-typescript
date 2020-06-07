@@ -5,9 +5,14 @@ import { Link } from 'react-router-dom';
 import SignIN from './SignIn';
 import SignUp from './SignUp';
 
+const RootPath = styled.p`
+  text-align: center;
+`
+
 const FormWrap = styled.div`
   display: flex;
   justify-content: space-around;
+  margin-top: 30px;
   .form-separate {
     display: flex;
     align-items: center;
@@ -37,9 +42,9 @@ const FormWrap = styled.div`
 const Login = () => {
   return (
     <Page title='Login' wide={true}>
-      <p>
-        <Link to='/'>HOME</Link> >> LOGIN
-      </p>
+      <RootPath>
+        <Link to='/'>HOME</Link> >> ACCOUNT 
+      </RootPath>
       <FormWrap>
         <SignIN />
         <SignUp />

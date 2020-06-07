@@ -1,23 +1,45 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 import ReactTooltip from 'react-tooltip';
+import { Button } from './Form';
+import { auth } from '../../db/firebase';
+import { useDispatch, useSelector } from 'react-redux';
+import { logout, selectUser } from '../../features/user/userSlice';
 
-const HeaderNav = () => {
+const NavButton = styled(Button)`
+  margin: 0;
+  background: transparent;
+  padding: 0;
+  a {
+    color: ${(p) => p.theme.subText};
+  }
+`;
+
+
+
+const HeaderLoginedNav = () => {
+  const dispatch = useDispatch();
+  const user = useSelector(selectUser);
+
+  const handleLogout = () => {
+    auth.signOut();
+    dispatch(logout());
+  };
+
   return (
     <>
-      <Link data-tip='Login' to='/login'>
+      <div data-tip='お気に入り'>
         <svg
-          version='1.1'
           xmlns='http://www.w3.org/2000/svg'
           width='20'
           height='20'
           viewBox='0 0 32 32'
           className='header-icon'
         >
-          <title>user</title>
-          <path d='M18 22.082v-1.649c2.203-1.241 4-4.337 4-7.432 0-4.971 0-9-6-9s-6 4.029-6 9c0 3.096 1.797 6.191 4 7.432v1.649c-6.784 0.555-12 3.888-12 7.918h28c0-4.030-5.216-7.364-12-7.918z'></path>
+          <path d='M6 0v32l10-10 10 10V0z' />
         </svg>
-      </Link>
+      </div>
       <ReactTooltip />
       <div data-tip='cart'>
         <svg
@@ -36,8 +58,14 @@ const HeaderNav = () => {
         <span>12</span>
       </div>
       <ReactTooltip />
+      {user?.currrentUser?.role_id === 1 ? (
+        <NavButton>
+          <Link to='/admin'>管理画面</Link>
+        </NavButton>
+      ) : null}
+      {user.isLogin && <NavButton onClick={handleLogout}>ログアウト</NavButton>}
     </>
   );
 };
 
-export { HeaderNav };
+export { HeaderLoginedNav };

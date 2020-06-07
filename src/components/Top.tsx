@@ -137,9 +137,9 @@ const Filter = styled.label`
   margin-top: 5px;
 `;
 
-const Home = () => {
+const Top = () => {
   return (
-    <Page title='Home' wide={true}>
+    <Page title='Top' wide={true}>
       <Categories>
         <CategoryItem style={{ backgroundImage: `url(${Hats})` }}>
           <div className='category-item-inner'>
@@ -298,4 +298,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Top;

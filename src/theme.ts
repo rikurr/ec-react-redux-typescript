@@ -1,8 +1,8 @@
 import 'styled-components';
 
 export const theme = {
-  primaryColor: '#178B8D',
-  subColor: '#729994',
+  primaryColor: '#729994',
+  subColor: '#178B8D',
   secondaryColor: '#FBAA0B',
   baseText: '#333',
   secondText: '#aaa',
