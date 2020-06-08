@@ -9,7 +9,7 @@ Zaraのアプリで商品を買う機会が多く、自分をUI/UXの整った�
 # 使用技術
 
 ## 言語
--TypeScript
+- TypeScript
 
 ## ライブラリ
 - React
