@@ -8,7 +8,23 @@ Zaraのアプリで商品を買う機会が多く、自分をUI/UXの整った�
 
 # 使用技術
 
-React-Redux-TypeScript-Firebase-Stripe
+## 言語
+-TypeScript
+
+## ライブラリ
+- React
+- Redux-Toolkit
+
+## バックエンド
+- FireStore
+- Firebase Auth
+- Firebase Storage
+
+## 決済機能
+- Stripe
+
+## デプロイ
+- Firebase Hosting
 
 # 機能一覧
 
