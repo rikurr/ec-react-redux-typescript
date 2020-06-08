@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { Page } from './common';
 import Hats from '../images/categories/hats.jpg';
@@ -36,9 +37,10 @@ const CategoryItem = styled.div`
     height: 100%;
     > div {
       padding: 5px 10px;
-      background: ${(p) => p.theme.baseColor3};
-      color: ${(p) => p.theme.secondaryColor};
+      background: ${(p) => p.theme.baseColor2};
+      color: ${(p) => p.theme.baseText};
       font-weight: bold;
+      opacity: 0.8;
     }
   }
   @media (max-width: 960px) {
@@ -141,30 +143,40 @@ const Top = () => {
   return (
     <Page title='Top' wide={true}>
       <Categories>
-        <CategoryItem style={{ backgroundImage: `url(${Hats})` }}>
-          <div className='category-item-inner'>
-            <div>Hats</div>
-          </div>
+        <CategoryItem style={{ backgroundImage: `url(${shoes})` }}>
+          <Link to='/shop/shoes'>
+            <div className='category-item-inner'>
+              <div>シューズ</div>
+            </div>
+          </Link>
         </CategoryItem>
         <CategoryItem style={{ backgroundImage: `url(${grass})` }}>
-          <div className='category-item-inner'>
-            <div>Hats</div>
-          </div>
+          <Link to='/shop/sunglasses'>
+            <div className='category-item-inner'>
+              <div>サングラス</div>
+            </div>
+          </Link>
         </CategoryItem>
         <CategoryItem style={{ backgroundImage: `url(${shoes})` }}>
-          <div className='category-item-inner'>
-            <div>Hats</div>
-          </div>
+          <Link to='/shop/kids'>
+            <div className='category-item-inner'>
+              <div>キッズ</div>
+            </div>
+          </Link>
         </CategoryItem>
         <CategoryItem style={{ backgroundImage: `url(${Hats})` }}>
-          <div className='category-item-inner'>
-            <div>Hats</div>
-          </div>
+          <Link to='/shop/men'>
+            <div className='category-item-inner'>
+              <div>メンズ</div>
+            </div>
+          </Link>
         </CategoryItem>
         <CategoryItem style={{ backgroundImage: `url(${grass})` }}>
-          <div className='category-item-inner'>
-            <div>Hats</div>
-          </div>
+          <Link to='/shop/women'>
+            <div className='category-item-inner'>
+              <div>レディース</div>
+            </div>
+          </Link>
         </CategoryItem>
       </Categories>
 

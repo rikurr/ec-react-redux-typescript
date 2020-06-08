@@ -170,7 +170,7 @@ export const GlobalStyle = createGlobalStyle`
   a {
     font-size: ${(p) => p.theme.FONT.BASE}rem;
     text-decoration: none;
-    color: ${(p) => p.theme.primaryColor};
+    color: ${(p) => p.theme.baseText};
   }
   a:hover{
     opacity: 0.8;

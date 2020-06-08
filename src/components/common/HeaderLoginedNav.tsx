@@ -11,9 +11,8 @@ const NavButton = styled(Button)`
   margin: 0;
   background: transparent;
   padding: 0;
-  a {
-    color: ${(p) => p.theme.subText};
-  }
+  color: ${(p) => p.theme.baseText};
+  font-size: ${p => p.theme.FONT.SMALL}rem;
 `;
 
 

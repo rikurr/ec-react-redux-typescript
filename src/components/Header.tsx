@@ -6,9 +6,9 @@ import { selectUser } from '../features/user/userSlice';
 import { useSelector } from 'react-redux';
 
 const HeaderWrap = styled.header`
-  height: 66px;
-  background: ${(p) => p.theme.primaryColor};
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  height: 90px;
+  background: ${(p) => p.theme.baseColor1};
+  border-bottom: 1px solid ${(p) => p.theme.baseColor3};
 
   .header-inner {
     width: 95%;
@@ -18,12 +18,21 @@ const HeaderWrap = styled.header`
     justify-content: space-between;
     align-items: center;
   }
+  .header-left {
+    display: flex;
+    align-items: center;
+    a {
+      text-align: center;
+      margin-right: 10px;
+    }
+  }
 `;
 const Branding = styled.h1`
+  margin-right: 30px;
   a {
     font-size: ${(p) => p.theme.FONT.XXXLARGE}rem;
     font-family: 'Acme', sans-serif;
-    color: ${(p) => p.theme.subText};
+    margin-right: 0;
   }
 `;
 
@@ -36,7 +45,7 @@ const HeaderNavWrap = styled.nav`
     margin-right: 20px;
   }
   .header-icon {
-    fill: ${(p) => p.theme.baseColor1};
+    fill: ${(p) => p.theme.primaryColor};
     /* stroke: ${(p) => p.theme.baseColor1};
     stroke-width: 1; */
     width: 17px;
@@ -46,8 +55,7 @@ const HeaderNavWrap = styled.nav`
     margin-right: 15px;
   }
   span{
-    color: ${(p) => p.theme.secondaryColor};
-
+    font-size: ${(p) => p.theme.FONT.TINY}rem;
   }
 `;
 const Header = () => {
@@ -55,9 +63,13 @@ const Header = () => {
   return (
     <HeaderWrap>
       <div className='header-inner'>
-        <Branding>
-          <Link to='/'>InFaste</Link>
-        </Branding>
+        <div className='header-left'>
+          <Branding>
+            <Link to='/'>InFaste</Link>
+          </Branding>
+          <Link to='/men'>メンズ</Link>
+          <Link to='/women'>レディース</Link>
+        </div>
         <HeaderNavWrap>
           {userState.isLogin ? <HeaderLoginedNav /> : <HeaderNav />}
         </HeaderNavWrap>

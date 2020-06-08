@@ -15,6 +15,7 @@ import Page404 from './components/Page404';
 import { useSelector, useDispatch } from 'react-redux';
 import { subscribeFromAuth } from './features/user/userSlice';
 import AdminPage from './components/AdminPage';
+import Shop from './components/Shop';
 
 const App: FC = () => {
   const appState = useSelector(selectApp);
@@ -39,7 +40,10 @@ const App: FC = () => {
             <Switch>
               <Route exact path='/'>
                 <Top />
-              </Route>
+                </Route>
+                <Route path='/shop/:category'>
+                  <Shop />
+                </Route>
               <Route path='/login'>
                 <Login />
               </Route>
