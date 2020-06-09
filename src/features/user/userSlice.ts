@@ -43,7 +43,7 @@ export const {
   setCurrentUserFailure,
 } = userSlice.actions;
 
-export const subscribeFromAuth = (): AppThunk => (dispatch) => {
+export const checkUserAuth = (): AppThunk => (dispatch) => {
   const subscribe = () => {
     auth.onAuthStateChanged(async (user) => {
       if (user) {

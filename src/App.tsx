@@ -13,7 +13,7 @@ import Header from './components/Header';
 import { Footer, FlashMessages, LoadingIcon } from './components/common';
 import Page404 from './components/Page404';
 import { useSelector, useDispatch } from 'react-redux';
-import { subscribeFromAuth } from './features/user/userSlice';
+import { checkUserAuth } from './features/user/userSlice';
 import AdminPage from './components/AdminPage';
 import Shop from './components/Shop';
 
@@ -23,8 +23,8 @@ const App: FC = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(subscribeFromAuth());
-  }, [dispatch]);
+    dispatch(checkUserAuth());
+  }, []);
 
   console.log(userState.currrentUser);
   return (

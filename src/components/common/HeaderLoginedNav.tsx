@@ -7,15 +7,18 @@ import { auth } from '../../db/firebase';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout, selectUser } from '../../features/user/userSlice';
 
+export const IconWrap = styled.div`
+  margin-right: 10px;
+  display: flex;
+`
+
 const NavButton = styled(Button)`
   margin: 0;
   background: transparent;
   padding: 0;
   color: ${(p) => p.theme.baseText};
-  font-size: ${p => p.theme.FONT.SMALL}rem;
+  font-size: ${(p) => p.theme.FONT.SMALL}rem;
 `;
-
-
 
 const HeaderLoginedNav = () => {
   const dispatch = useDispatch();
@@ -28,7 +31,7 @@ const HeaderLoginedNav = () => {
 
   return (
     <>
-      <div data-tip='お気に入り'>
+      <IconWrap data-tip='お気に入り'>
         <svg
           xmlns='http://www.w3.org/2000/svg'
           width='20'
@@ -38,9 +41,10 @@ const HeaderLoginedNav = () => {
         >
           <path d='M6 0v32l10-10 10 10V0z' />
         </svg>
-      </div>
+        <span>12</span>
+      </IconWrap>
       <ReactTooltip />
-      <div data-tip='cart'>
+      <IconWrap data-tip='cart'>
         <svg
           version='1.1'
           xmlns='http://www.w3.org/2000/svg'
@@ -55,7 +59,7 @@ const HeaderLoginedNav = () => {
           <path d='M32 16v-12h-24c0-1.105-0.895-2-2-2h-6v2h4l1.502 12.877c-0.915 0.733-1.502 1.859-1.502 3.123 0 2.209 1.791 4 4 4h24v-2h-24c-1.105 0-2-0.895-2-2 0-0.007 0-0.014 0-0.020l26-3.98z'></path>
         </svg>{' '}
         <span>12</span>
-      </div>
+      </IconWrap>
       <ReactTooltip />
       {user?.currrentUser?.role_id === 1 ? (
         <NavButton>

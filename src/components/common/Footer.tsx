@@ -1,6 +1,5 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
 
 const FooterWrap = styled.div`
   background: ${(p) => p.theme.baseColor3};
@@ -33,6 +32,12 @@ const FooterNav = styled.nav`
   height: 90%;
   margin: 0 auto;
   padding-top: 50px;
+  @media (max-width: 480px) {
+    flex-direction: column;
+  }
+  > div{
+    border-bottom: 1px solid #fff;
+  }
 `;
 
 const Footer: FC = () => {
@@ -81,8 +86,11 @@ const Footer: FC = () => {
           </div>
         </FooterNav>
         <p>
-          Copyright &copy; 2020 <Link to='/'>InFaste</Link>. All rights
-          reserved.
+          Copyright &copy; 2020{' '}
+          <a href='https://github.com/riku0329/ec-react-redux-typescript' target='blank'>
+            InFaste
+          </a>
+          . All rights reserved.
         </p>
       </FooterInner>
     </FooterWrap>

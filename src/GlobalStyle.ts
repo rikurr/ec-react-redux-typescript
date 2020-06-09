@@ -131,12 +131,6 @@ export const GlobalStyle = createGlobalStyle`
   *::after {
     box-sizing: border-box;
   }
-  html {
-    font-size: 62.5%;
-    @media (max-width: 768px) {
-      font-size: 50%;
-    }
-  }
   body {
     background: ${(p) => p.theme.baseColor1};
     min-height: 100vh;
@@ -175,8 +169,9 @@ export const GlobalStyle = createGlobalStyle`
   a:hover{
     opacity: 0.8;
   }
-  @media (max-width: 768px) {
-    html {
+  html {
+    font-size: 62.5%;
+    @media (max-width: 768px) {
       font-size: 50%;
     }
   }

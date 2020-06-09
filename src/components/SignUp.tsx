@@ -10,7 +10,6 @@ import { Form, Input, Button, LiveValidateMessage } from './common';
 import { auth, createUserDocument } from '../db/firebase';
 
 type Value = {
-  username: string;
   email: string;
   password: string;
 };
@@ -19,21 +18,19 @@ const SignUp = ({ history }: RouteComponentProps) => {
   const dispatch = useDispatch();
   const appState = useSelector(selectApp);
   const [value, setValue] = useState<Value>({
-    username: '',
     email: '',
     password: '',
   });
   const [isSend, setSend] = useState<boolean>(false);
 
-  const { username, email, password } = value;
+  const { email, password } = value;
 
   const handleSubmit = async (e: FormEvent) => {
     setSend(true);
     e.preventDefault();
     if (
       email.trim() === '' ||
-      password.trim() === '' ||
-      username.trim() === ''
+      password.trim() === ''
     ) {
       return dispatch(
         hasError('電子メールまたはパスワードが正しくありません。')
@@ -45,9 +42,8 @@ const SignUp = ({ history }: RouteComponentProps) => {
         password
       );
       console.log(user);
-      await createUserDocument(user, { username });
+      await createUserDocument(user);
       setValue({
-        username: '',
         email: '',
         password: '',
       });
@@ -70,13 +66,6 @@ const SignUp = ({ history }: RouteComponentProps) => {
       {appState.validateError && (
         <LiveValidateMessage>{appState.errorMessage}</LiveValidateMessage>
       )}
-      <Input
-        onChange={handleChange}
-        type='type'
-        name='username'
-        value={username}
-        placeholder='ユーザーネーム'
-      />
       <Input
         onChange={handleChange}
         type='email'

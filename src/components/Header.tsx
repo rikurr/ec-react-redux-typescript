@@ -41,23 +41,62 @@ const HeaderNavWrap = styled.nav`
   height: 100%;
   justify-content: center;
   align-items: center;
-  a{
-    margin-right: 20px;
+  a {
+    margin-right: 10px;
   }
   .header-icon {
     fill: ${(p) => p.theme.primaryColor};
-    /* stroke: ${(p) => p.theme.baseColor1};
-    stroke-width: 1; */
     width: 17px;
     height: 17px;
+    stroke: #333;
+    stroke-width: 1;
   }
-  > div{
-    margin-right: 15px;
-  }
-  span{
+  span {
     font-size: ${(p) => p.theme.FONT.TINY}rem;
   }
 `;
+
+const ResponsivNav = styled.div`
+  display: none;
+  width: 60px;
+  height: 50px;
+  position: fixed;
+  top: 20px;
+  right: 0;
+  padding-top: 10px;
+  z-index: 100;
+
+  span {
+    display: block;
+    width: 20px;
+    height: 2px;
+    background-color: ${(p) => p.theme.baseColor3};
+    margin: 0 auto;
+    margin-top: 15px;
+  }
+  span:before,
+  span:after {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 20px;
+    height: 2px;
+    background-color: ${(p) => p.theme.baseColor3};
+    margin: 0 auto;
+  }
+
+  span:before {
+    margin-top: -7px;
+  }
+  span:after {
+    margin-top: 7px;
+  }
+
+  @media (min-width: 480px) {
+    display: none;
+  }
+`;
+
 const Header = () => {
   const userState = useSelector(selectUser);
   return (
@@ -67,9 +106,12 @@ const Header = () => {
           <Branding>
             <Link to='/'>InFaste</Link>
           </Branding>
-          <Link to='/men'>メンズ</Link>
-          <Link to='/women'>レディース</Link>
+          <Link to='/shop/men'>メンズ</Link>
+          <Link to='/shop/women'>レディース</Link>
         </div>
+        <ResponsivNav>
+          <span />
+        </ResponsivNav>
         <HeaderNavWrap>
           {userState.isLogin ? <HeaderLoginedNav /> : <HeaderNav />}
         </HeaderNavWrap>

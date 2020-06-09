@@ -1,5 +1,4 @@
-import styled from 'styled-components'
-
+import styled from 'styled-components';
 
 const LiveValidateMessage = styled.p`
   z-index: 1;
@@ -9,4 +8,4 @@ const LiveValidateMessage = styled.p`
   background: #faaaaa;
 `;
 
-export {LiveValidateMessage}
+export { LiveValidateMessage };

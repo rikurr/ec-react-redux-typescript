@@ -41,10 +41,10 @@ const Alert = styled.div`
   -webkit-animation-fill-mode: forwards;
   animation-fill-mode: forwards;
   text-align: center;
-  background: ${p => p.theme.baseColor3};
+  background: ${p => p.theme.primaryColor};
   padding: 10px 40px;
   border-radius: 6px;
-  color: ${p => p.theme.subColor};
+  color: ${p => p.theme.subText};
   :last-of-type {
     display: block;
   }

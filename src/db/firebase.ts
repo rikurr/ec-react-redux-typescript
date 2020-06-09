@@ -23,12 +23,11 @@ export const createUserDocument = async (userAuth: any, addData?: any) => {
   const snapShot = await userRef.get();
 
   if (!snapShot.exists) {
-    const { displayName, email } = userAuth;
+    const { email } = userAuth;
     const createdAt = new Date();
     const role_id: number = 2;
     try {
       await userRef.set({
-        username: displayName,
         email,
         createdAt,
         role_id,

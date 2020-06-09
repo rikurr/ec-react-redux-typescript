@@ -1,12 +1,20 @@
-import React, { useEffect } from "react"
-import styled from "styled-components"
+import React, { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import styled from 'styled-components';
+import Categories from './Categories';
+import { Page } from './common';
 
-const Shop = () => {
-  return (
-    <>
-      <h1>Shop</h1>
-    </>
-  )
+type RouteParams = {
+  category: string;
 }
 
-export default Shop
+const Shop = () => {
+  const params = useParams<RouteParams>().category
+  return (
+    <Page title={`${params}`} wide={true}>
+      <Categories />
+    </Page>
+  );
+};
+
+export default Shop;
