@@ -1,12 +1,9 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, FC } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import Hats from '../images/categories/hats.jpg';
 import grass from '../images/categories/sunglasses.jpg';
 import shoes from '../images/categories/shoes.jpg';
-import p1 from '../images/products/p1.jpg';
-import p2 from '../images/products/p2.jpg';
-import p3 from '../images/products/p3.jpg';
 
 const CategoriesWrap = styled.section`
   display: flex;
@@ -50,9 +47,14 @@ const CategoryItem = styled.div`
   }
 `;
 
-const Categories = () => {
+type Props = {
+  params: string;
+};
+
+const Categories: FC<Props> = ({ params }) => {
   return (
     <>
+      <h2>カテゴリー</h2>
       <CategoriesWrap>
         <CategoryItem style={{ backgroundImage: `url(${shoes})` }}>
           <Link to='/shop/shoes'>

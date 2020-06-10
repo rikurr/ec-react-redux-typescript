@@ -18,10 +18,10 @@ const AdminList = styled.ul`
   justify-content: center;
   align-items: center;
   height: 100%;
-  li{
+  li {
     margin-right: 30px;
   }
-`
+`;
 
 const AdminPage = () => {
   return (
@@ -29,19 +29,11 @@ const AdminPage = () => {
       <AdminNav>
         <AdminList>
           <li>
-            <Link to='/'>カテゴリー作成</Link>
+            <Link to='/admin/create-collection'>新規作成</Link>
           </li>
+
           <li>
-            <Link to='/'>カテゴリー作成</Link>
-          </li>
-          <li>
-            <Link to='/'>カテゴリー作成</Link>
-          </li>
-          <li>
-            <Link to='/'>カテゴリー作成</Link>
-          </li>
-          <li>
-            <Link to='/'>カテゴリー作成</Link>
+            <Link to='/'>売上管理</Link>
           </li>
         </AdminList>
       </AdminNav>

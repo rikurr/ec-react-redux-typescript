@@ -24,14 +24,14 @@ export const createUserDocument = async (userAuth: any, addData?: any) => {
 
   if (!snapShot.exists) {
     const { email } = userAuth;
-    const createdAt = new Date();
+    const createdAt = firebaseTimestamp;
     const role_id: number = 2;
     try {
       await userRef.set({
         email,
         createdAt,
         role_id,
-        ...addData
+        ...addData,
       });
     } catch (error) {
       console.log('ユーザーの作成に失敗しました');
@@ -40,8 +40,34 @@ export const createUserDocument = async (userAuth: any, addData?: any) => {
   return userRef;
 };
 
+export const saveCollection = async (
+  gender: string,
+  name: string,
+  description: string,
+  category: string,
+  place: string
+) => {
+  const collectionRef = firestore.collection('collections').doc();
+  const createdAt = firebaseTimestamp;
+  const data = {
+    gender: gender,
+    name: name,
+    description: description,
+    category: category,
+    place: place,
+    createdAt: createdAt,
+  };
+  try {
+    return await collectionRef.set(data);
+  } catch (error) {
+    console.log('error was collection');
+  }
+};
+
 export const auth = firebase.auth();
 export const firestore = firebase.firestore();
+export const storage = firebase.storage();
+export const firebaseTimestamp = firebase.firestore.Timestamp.now();
 
 const provider = new firebase.auth.GoogleAuthProvider();
 provider.setCustomParameters({ prompt: 'select_account' });

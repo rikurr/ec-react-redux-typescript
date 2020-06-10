@@ -12,6 +12,8 @@ const Form = styled.form`
   }
   @media (max-width: 480px) {
     width: 90%;
+    margin: 50px auto 0;
+    box-shadow: none;
   }
 `;
 const Input = styled.input`
@@ -50,7 +52,6 @@ const Button = styled.button`
   border: none;
   border-radius: 5px;
   color: ${(p) => p.theme.baseColor1};
-
   ${getButtonStyles}
   :hover {
     opacity: 0.8;

@@ -5,6 +5,9 @@ const FooterWrap = styled.div`
   background: ${(p) => p.theme.baseColor3};
   height: 40vh;
   margin-top: 80px;
+  @media (max-width: 480px) {
+    height: 60vh;
+  }
 `;
 
 const FooterInner = styled.div`

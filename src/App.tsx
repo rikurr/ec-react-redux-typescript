@@ -16,6 +16,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { checkUserAuth } from './features/user/userSlice';
 import AdminPage from './components/AdminPage';
 import Shop from './components/Shop';
+import CreateCollection from './components/Create-Collections';
 
 const App: FC = () => {
   const appState = useSelector(selectApp);
@@ -40,17 +41,22 @@ const App: FC = () => {
             <Switch>
               <Route exact path='/'>
                 <Top />
-                </Route>
-                <Route path='/shop/:category'>
-                  <Shop />
-                </Route>
+              </Route>
+              <Route path='/shop/:category'>
+                <Shop />
+              </Route>
               <Route path='/login'>
                 <Login />
               </Route>
               {userState.isLogin && userState.currrentUser.role_id === 1 && (
-                <Route path='/admin'>
-                  <AdminPage />
-                </Route>
+                <>
+                  <Route exact path='/admin'>
+                    <AdminPage />
+                  </Route>
+                  <Route path='/admin/create-collection'>
+                    <CreateCollection />
+                  </Route>
+                </>
               )}
               <Route>
                 <Page404 />

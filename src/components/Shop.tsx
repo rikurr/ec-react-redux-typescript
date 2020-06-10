@@ -12,7 +12,7 @@ const Shop = () => {
   const params = useParams<RouteParams>().category
   return (
     <Page title={`${params}`} wide={true}>
-      <Categories />
+      <Categories params={params} />
     </Page>
   );
 };
